@@ -315,7 +315,7 @@ class rvm(object):
             if (numAligned > 0):
                 # only integer scalar arrays can be converted to a scalar index
                 findAligned = list(np.array(findAligned, dtype=int))
-                reinstated = self.alignedOut[findAligned]
+                # reinstated = self.alignedOut[findAligned] # Not used
                 self.alignedIn = np.delete(self.alignedIn, findAligned, 0)
                 self.alignedOut = np.delete(self.alignedOut, findAligned, 0)
 
@@ -525,7 +525,7 @@ if (__name__ == '__main__'):
 	Basis = np.hstack([Basis, np.ones(N)[:,None]])
 
 	# Instantitate the RVM object and train it
-	p = rvm(Basis, y, noise=noise_std, verbose=True)
+	p = rvm(Basis, y, noise=noise_std)
 	p.iterateUntilConvergence()
 
 	# Compute total fits, fringes and line
